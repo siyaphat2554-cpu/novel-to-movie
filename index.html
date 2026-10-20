@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10101a">
+<title>นิยายเป็นหนัง — AI Story Studio</title>
+<style>
+:root{--bg:#0b0b12;--panel:#14141f;--panel2:#1b1b29;--line:#303044;--text:#f5f3ff;--muted:#aaa8c0;--purple:#9a7bff;--pink:#ff7eb6;--green:#80e5bb}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#21183d 0,#0b0b12 48%);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+header{padding:22px max(18px,calc((100% - 1100px)/2));border-bottom:1px solid #ffffff12;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.2px}.logo{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;font-size:21px;box-shadow:0 8px 30px #9a7bff40}
+.pill{font-size:12px;border:1px solid #80e5bb55;color:var(--green);padding:6px 10px;border-radius:99px;white-space:nowrap}
+main{max-width:1100px;margin:auto;padding:34px 18px 70px}.hero{text-align:center;margin:10px auto 30px;max-width:720px}.eyebrow{color:#c0afff;font-size:12px;letter-spacing:2px;font-weight:800}.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.15;margin:12px 0}.gradient{background:linear-gradient(90deg,#b9a5ff,#ff9bc8);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);line-height:1.7;margin:0 auto;max-width:600px}
+.layout{display:grid;grid-template-columns:1.02fr .98fr;gap:18px;align-items:start}.panel{background:linear-gradient(180deg,#171724f5,#11111bf5);border:1px solid var(--line);border-radius:22px;padding:21px;box-shadow:0 18px 50px #0003}.panel h2{font-size:18px;margin:0 0 5px}.sub{color:var(--muted);font-size:13px;line-height:1.5;margin:0 0 17px}
+label{display:block;font-size:13px;color:#ddd9f2;font-weight:650;margin:15px 0 8px}input,select,textarea{width:100%;background:#0d0d16;border:1px solid #39384f;border-radius:12px;color:var(--text);padding:12px 13px;font:inherit;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px #9a7bff22}textarea{min-height:220px;resize:vertical;line-height:1.65}select{cursor:pointer}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{border:0;border-radius:13px;padding:13px 16px;font-weight:800;font-size:14px;cursor:pointer;transition:transform .15s,filter .15s}.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}.primary{background:linear-gradient(100deg,var(--purple),#c184ff);color:#130d26;width:100%;margin-top:16px}.secondary{background:#242337;border:1px solid #41405b;color:#f1edff}.small{font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px}
+.results-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.count{font-size:12px;background:#29243d;color:#d4c8ff;border-radius:99px;padding:6px 10px}
+.empty{border:1px dashed #44415e;border-radius:16px;padding:30px 20px;text-align:center;color:var(--muted);line-height:1.7}.empty .emoji{font-size:35px;margin-bottom:8px}
+.scene{border:1px solid #343348;background:#10101a;border-radius:16px;overflow:hidden;margin:12px 0}.scene-top{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:13px 14px;border-bottom:1px solid #ffffff0e}.scene-no{color:#c1b0ff;font-size:11px;font-weight:800;letter-spacing:1px}.scene-title{font-weight:800;font-size:14px;margin-top:3px}.scene-body{padding:13px 14px}.scene-body label{margin:0 0 6px;font-size:11px;color:var(--muted)}.scene-body textarea{min-height:78px;font-size:13px;padding:10px}.scene-body input{font-size:13px;padding:10px}.scene-visual{height:145px;background:linear-gradient(145deg,#33224e,#16172b 55%,#41253c);display:grid;place-items:center;position:relative;overflow:hidden}.scene-visual:before{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:#c2a7ff30;filter:blur(12px);right:10%;top:-25px}.scene-visual:after{content:"";position:absolute;width:150%;height:45px;background:#ffffff0c;transform:rotate(-18deg);top:55%}.scene-visual span{font-size:42px;z-index:1;filter:drop-shadow(0 5px 15px #0007)}.scene-actions{display:flex;gap:8px;flex-wrap:wrap;padding:0 14px 14px}.scene-actions button{padding:7px 10px;font-size:12px}
+.exportrow{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.exportrow .btn{flex:1;min-width:140px}.notice{border:1px solid #8068d255;background:#241d3c;color:#d8d0ff;border-radius:12px;padding:12px 13px;font-size:12px;line-height:1.6;margin-top:16px}
+footer{text-align:center;color:#77758c;font-size:12px;padding:20px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.hero{margin-top:0}.panel{padding:17px}header{padding:16px 18px}main{padding-top:25px}}
+@media(max-width:420px){.row{grid-template-columns:1fr}.pill{font-size:10px}.hero h1{font-size:31px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">✦</div><div>นิยายเป็นหนัง <span style="display:block;color:var(--muted);font-size:11px;font-weight:500">AI STORY STUDIO</span></div></div><div class="pill">● ต้นแบบทดลองฟรี</div></header>
+<main>
+<section class="hero"><div class="eyebrow">YOUR STORY, YOUR MOVIE</div><h1>เปลี่ยนนิยายให้เป็น<br><span class="gradient">ฉากภาพยนตร์</span></h1><p>วางเรื่องราวของคุณ แล้วจัดเป็นฉากสำหรับสร้างวิดีโอ AI ทีละฉาก<br>เวอร์ชันนี้เป็นต้นแบบที่ทำงานในเบราว์เซอร์ ไม่ต้องสมัครสมาชิก</p></section>
+<div class="layout">
+<section class="panel">
+<h2>✍️ 1. ใส่เรื่องราวของคุณ</h2><p class="sub">เริ่มจากนิยายสั้น ๆ หรือใช้เรื่องตัวอย่าง แล้วให้ระบบช่วยแบ่งฉากเบื้องต้น</p>
+<label for="storyTitle">ชื่อเรื่อง</label><input id="storyTitle" value="แสงสุดท้ายแห่งนครลอยฟ้า" placeholder="ตั้งชื่อเรื่องของคุณ">
+<div class="row"><div><label for="genre">แนวเรื่อง</label><select id="genre"><option>แฟนตาซี</option><option>โรแมนติก</option><option>แอ็กชัน</option><option>สยองขวัญ</option><option>ไซไฟ</option><option>ชีวิตประจำวัน</option></select></div><div><label for="ratio">สัดส่วนวิดีโอ</label><select id="ratio"><option value="9:16">แนวตั้ง 9:16</option><option value="16:9">แนวนอน 16:9</option><option value="1:1">สี่เหลี่ยม 1:1</option></select></div></div>
+<label for="story">เนื้อหานิยาย</label><textarea id="story" placeholder="วางนิยายของคุณที่นี่...">ในคืนที่ดวงจันทร์เปลี่ยนเป็นสีเงิน ลิน นักเดินทางสาว เดินทางมาถึงนครลอยฟ้าที่ถูกทิ้งร้าง
+สายลมพัดผ่านหอคอยสูง ขณะที่แสงสีฟ้าลึกลับส่องออกมาจากประตูโบราณกลางเมือง
+ลินยกตะเกียงขึ้นและผลักประตูอย่างระมัดระวัง ภายในนั้นมีมังกรแก้วตัวเล็กนอนหลับอยู่บนแท่นหิน
+เมื่อมังกรลืมตาขึ้น ทั้งเมืองก็เริ่มส่องแสง และเสียงระฆังที่เงียบงันมานานก็ดังก้องไปทั่วท้องฟ้า</textarea>
+<button class="btn primary" id="makeScenes">✦ แบ่งนิยายเป็นฉาก</button>
+<div class="small">ต้นแบบนี้แบ่งข้อความเป็นฉากด้วยกติกาพื้นฐาน ยังไม่ได้เรียก AI จริง และยังไม่ได้สร้างไฟล์วิดีโอ</div>
+</section>
+<section class="panel">
+<div class="results-head"><div><h2>🎬 2. สตอรีบอร์ดของคุณ</h2><p class="sub" style="margin:5px 0 0">แก้ไขชื่อฉากและคำบรรยายได้</p></div><span class="count" id="sceneCount">0 ฉาก</span></div>
+<div id="scenes"><div class="empty"><div class="emoji">🎞️</div><strong style="color:#eee9ff">ฉากของคุณจะปรากฏที่นี่</strong><br>กด “แบ่งนิยายเป็นฉาก” เพื่อเริ่มต้น</div></div>
+<div id="exportArea" style="display:none"><div class="exportrow"><button class="btn secondary" id="downloadText">ดาวน์โหลดสตอรีบอร์ด .txt</button><button class="btn secondary" id="copyText">คัดลอกสตอรีบอร์ด</button></div><div class="notice">ขั้นต่อไปของโปรเจกต์: เชื่อม AI เพื่อเขียนพรอมป์ต์ภาพ สร้างภาพแต่ละฉาก และส่งภาพไปยังบริการ Image-to-Video API เพื่อสร้างวิดีโอจริง ซึ่งอาจมีค่าใช้จ่ายตามผู้ให้บริการ</div></div>
+</section>
+</div>
+</main><footer>ต้นแบบส่วนตัว • บันทึก/ประมวลผลในเบราว์เซอร์นี้ • ยังไม่มีการส่งเรื่องไปยังเซิร์ฟเวอร์</footer>
+<script>
+const $=id=>document.getElementById(id);
+let currentScenes=[];
+function splitStory(text){
+ const clean=text.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+ if(clean.length>1)return clean;
+ return text.split(/(?<=[.!?。！？])\s+/).map(s=>s.trim()).filter(Boolean);
+}
+function iconFor(text){if(/มังกร|เวท|แสง|ประตู|ดวงจันทร์|นคร|ลอยฟ้า/.test(text))return '✨';if(/เดิน|วิ่ง|เดินทาง|ต่อสู้|ผลัก|หนี/.test(text))return '🏃';if(/รัก|หัวใจ|จูบ|คิดถึง/.test(text))return '💗';if(/มืด|ผี|เลือด|กลัว|เงา/.test(text))return '🌑';return '🎬'}
+function promptFor(line,genre,ratio){return `ภาพยนตร์แนว${genre}, ${ratio==='9:16'?'แนวตั้ง 9:16':ratio==='16:9'?'แนวนอน 16:9':'สี่เหลี่ยม 1:1'}, ${line} แสงแบบภาพยนตร์ องค์ประกอบภาพชัดเจน รักษารูปลักษณ์ตัวละครให้ต่อเนื่อง ไม่มีข้อความบนภาพ`}
+function render(){
+ $('sceneCount').textContent=currentScenes.length+' ฉาก';
+ $('exportArea').style.display=currentScenes.length?'block':'none';
+ if(!currentScenes.length){$('scenes').innerHTML='<div class="empty">ยังไม่มีฉาก</div>';return}
+ $('scenes').innerHTML=currentScenes.map((s,i)=>`<article class="scene"><div class="scene-visual"><span>${s.icon}</span></div><div class="scene-top"><div><div class="scene-no">SCENE ${String(i+1).padStart(2,'0')}</div><div class="scene-title">${escapeHtml(s.title)}</div></div><span style="font-size:11px;color:#aaa8c0">${s.duration} วินาที</span></div><div class="scene-body"><label>ชื่อฉาก</label><input data-field="title" data-i="${i}" value="${escapeAttr(s.title)}"><label style="margin-top:10px">เหตุการณ์ในฉาก</label><textarea data-field="description" data-i="${i}">${escapeHtml(s.description)}</textarea><label style="margin-top:10px">พรอมป์ต์สำหรับสร้างภาพ / วิดีโอ</label><textarea data-field="prompt" data-i="${i}">${escapeHtml(s.prompt)}</textarea></div><div class="scene-actions"><button class="btn secondary" data-action="up" data-i="${i}" ${i===0?'disabled':''}>↑ เลื่อนขึ้น</button><button class="btn secondary" data-action="down" data-i="${i}" ${i===currentScenes.length-1?'disabled':''}>↓ เลื่อนลง</button><button class="btn secondary" data-action="delete" data-i="${i}">ลบฉาก</button></div></article>`).join('');
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function escapeAttr(s){return escapeHtml(s)}
+$('makeScenes').addEventListener('click',()=>{
+ const story=$('story').value.trim();if(!story){alert('กรุณาใส่เนื้อหานิยายก่อน');return}
+ const parts=splitStory(story);const genre=$('genre').value,ratio=$('ratio').value;
+ currentScenes=parts.map((p,i)=>({title:`ฉากที่ ${i+1}`,description:p,prompt:promptFor(p,genre,ratio),duration:5,icon:iconFor(p)}));
+ render();
+});
+$('scenes').addEventListener('input',e=>{const el=e.target;if(!el.dataset.field)return;const i=+el.dataset.i;currentScenes[i][el.dataset.field]=el.value;if(el.dataset.field==='title'){const title=$('scenes').querySelectorAll('.scene-title')[i];if(title)title.textContent=el.value}});
+$('scenes').addEventListener('click',e=>{const b=e.target.closest('button[data-action]');if(!b)return;const i=+b.dataset.i,a=b.dataset.action;if(a==='delete')currentScenes.splice(i,1);if(a==='up'&&i>0)[currentScenes[i-1],currentScenes[i]]=[currentScenes[i],currentScenes[i-1]];if(a==='down'&&i<currentScenes.length-1)[currentScenes[i+1],currentScenes[i]]=[currentScenes[i],currentScenes[i+1]];render()});
+function exportStory(){return `ชื่อเรื่อง: ${$('storyTitle').value}\nแนวเรื่อง: ${$('genre').value}\nสัดส่วน: ${$('ratio').value}\nจำนวนฉาก: ${currentScenes.length}\n\n`+currentScenes.map((s,i)=>`ฉากที่ ${i+1}: ${s.title}\nระยะเวลา: ${s.duration} วินาที\nเหตุการณ์: ${s.description}\nพรอมป์ต์: ${s.prompt}`).join('\n\n')}
+$('downloadText').addEventListener('click',()=>{const blob=new Blob(['\ufeff'+exportStory()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='storyboard.txt';a.click();URL.revokeObjectURL(a.href)});
+$('copyText').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(exportStory());$('copyText').textContent='คัดลอกแล้ว ✓';setTimeout(()=>$('copyText').textContent='คัดลอกสตอรีบอร์ด',1600)}catch(e){alert('เบราว์เซอร์ไม่อนุญาตให้คัดลอกอัตโนมัติ กรุณาดาวน์โหลดไฟล์ .txt แทน')}});
+$('makeScenes').click();
+</script>
+</body></html>
